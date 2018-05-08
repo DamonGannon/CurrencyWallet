@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CurrencyWallet.Models.ApiModels;
+using CurrencyWallet.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,21 +10,16 @@ namespace CurrencyWallet.Controllers
 {
     public class HomeController : Controller
     {
+        private IApiService _apiService;
+
+        public HomeController(IApiService apiService)
+        {
+            _apiService = apiService;
+        }
+
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+            var test =_apiService.Get<LatestCurrencyDetailsResponseModel>(new LatestCurrencyDetailsRequestModel());
 
             return View();
         }
