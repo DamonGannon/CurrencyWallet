@@ -8,6 +8,6 @@ namespace CurrencyWallet.Models.ApiModels
     public class LatestCurrencyDetailsResponseModel
     {
         public string Base { get; set; }
-        public KeyValuePair<string, decimal> rates { get; set; }
+        public Dictionary<string, decimal> rates { get; set; }
     }
 }
