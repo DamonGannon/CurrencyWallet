@@ -1,4 +1,16 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+<add-to-wallet></add-to-wallet>
+<div id="test" data-bind="component: 'add-to-wallet'"></div>
+<script type="text/javascript">
+    require([
+        "jquery",
+        "knockout",
+        "/Content/Wallet/add-to-wallet.js"],
+        function ($, ko, wallet) {
+            $(function () {
+                ko.applyBindings({});
+            });
+        });
+</script>

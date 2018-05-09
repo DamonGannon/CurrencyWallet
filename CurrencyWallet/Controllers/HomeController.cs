@@ -19,9 +19,9 @@ namespace CurrencyWallet.Controllers
 
         public ActionResult Index()
         {
-            var test =_apiService.Get<LatestCurrencyDetailsResponseModel>(new LatestCurrencyDetailsRequestModel());
+            var currencies =_apiService.Get<LatestCurrencyDetailsResponseModel>(new LatestCurrencyDetailsRequestModel());
 
-            return View();
+            return View(currencies);
         }
     }
 }
