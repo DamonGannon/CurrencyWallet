@@ -10,17 +10,16 @@ namespace CurrencyWallet.Controllers
 {
     public class HomeController : Controller
     {
-        private IApiService _apiService;
+        private ICurrencyService _currencyService;
 
-        public HomeController(IApiService apiService)
+        public HomeController(ICurrencyService currencyService)
         {
-            _apiService = apiService;
+            _currencyService = currencyService;
         }
 
         public ActionResult Index()
         {
-            var currencies =_apiService.Get<LatestCurrencyDetailsResponseModel>(new LatestCurrencyDetailsRequestModel());
-
+            var currencies = _currencyService.GetCurrencies();
             return View(currencies);
         }
     }

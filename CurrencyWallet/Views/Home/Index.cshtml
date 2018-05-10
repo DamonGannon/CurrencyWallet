@@ -1,16 +1,25 @@
-﻿@{
+﻿@model CurrencyWallet.Models.CurrencyRatesResultModel
+@{
     ViewBag.Title = "Home Page";
 }
-<add-to-wallet></add-to-wallet>
-<div id="test" data-bind="component: 'add-to-wallet'"></div>
+@using Newtonsoft.Json;
+
+<wallet-summary params="Wallet: wallet, Currencies: Currencies"></wallet-summary>
+<add-to-wallet params="Currencies: Currencies, BaseCurrency: BaseCurrency, Wallet: wallet"></add-to-wallet>
 <script type="text/javascript">
     require([
         "jquery",
         "knockout",
-        "/Content/Wallet/add-to-wallet.js"],
-        function ($, ko, wallet) {
-            $(function () {
-                ko.applyBindings({});
+        "knockoutMapping",
+        "/Content/Wallet/add-to-wallet.js",
+        "/Content/Wallet/wallet-summary.js",
+    ],
+        function ($, ko, knockoutMapping, addToWallet, walletSumary) {
+            $(function () { 
+                var data = @Html.Raw(new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(Model));
+                var viewModel = knockoutMapping.fromJS(data);
+                viewModel.wallet = ko.observableArray([]);
+                ko.applyBindings(viewModel);
             });
         });
 </script>

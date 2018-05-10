@@ -47,7 +47,7 @@ namespace CurrencyWallet.App_Start
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
                 kernel.Bind<IApiService>().To<ApiService>();
-
+                kernel.Bind<ICurrencyService>().To<CurrencyService>();
                 kernel.Bind<HttpClient>().To<HttpClient>();
 
                 RegisterServices(kernel);

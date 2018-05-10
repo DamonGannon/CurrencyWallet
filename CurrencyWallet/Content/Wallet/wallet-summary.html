@@ -1,0 +1,39 @@
+﻿
+<h3 class="text-center">
+    Wallet Summary
+</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12, col-md-4">
+            <label>Convert To Currency:</label>
+            <select data-bind="options: currencies, optionsText: 'Currency', value: selectedCurrency"></select>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td scope="col">
+                        #
+                    </td>
+                    <td scope="col">
+                        Amount
+                    </td>
+                    <td scope="col">
+                        Currency
+                    </td>
+                    <td scope="col">
+                        Converted Amount
+                    </td>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: wallet">
+                <tr>
+                    <td scopt="row"></td>
+                    <td data-bind="text: amount"></td>
+                    <td data-bind="text: currency.Currency"></td>
+                    <td data-bind="text: convertedAmount"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
